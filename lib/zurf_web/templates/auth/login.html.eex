@@ -1,0 +1,7 @@
+<form class="p-2 mt-16 mx-auto rounded w-3/12">
+  <label for="email" class="color-white">Email</label>
+  <input type="email" name="" id="email" class="block mb-2 w-full rounded mt-3 focus:outline-none p-1 px-2">
+  <label for="password" class="color-white">Password</label>
+  <input type="password" name="" id="password" class="block mb-2 w-full rounded mt-3 focus:outline-none p-1 px-2">
+  <input type="button" value="Login" class="bg-purple-900 hover:bg-purple-800 text-white py-2 px-4 rounded mt-3 w-full cursor-pointer">
+</form>

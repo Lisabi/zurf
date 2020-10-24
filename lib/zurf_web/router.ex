@@ -10,21 +10,26 @@ defmodule ZurfWeb.Router do
   end
 
   pipeline :api do
-    plug :accepts, ["json", "text"]
+    plug :accepts, ["json"]
   end
 
   scope "/", ZurfWeb do
     pipe_through :browser
 
     get "/", PageController, :index
-    get "/about", PageController, :about
+    get "/login", AuthController, :show
+    get "/sample/:name/another/:vile", PageController, :sample
+
+    # get "/add_book", PageController, :new
   end
 
   # Other scopes may use custom stacks.
   scope "/api", ZurfWeb do
     pipe_through :api
 
-    resources "/books", ApiController
+    scope "/vi", V1, as: :v1 do
+      resources "/books", ApiController
+    end
   end
 
   # Enables LiveDashboard only for development

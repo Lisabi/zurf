@@ -1,4 +1,4 @@
-<%= for user <- @username do %>
-  <div>Hello <%= user.username %>
-  <p><%= user.description %></p></div>
+<%= for u <- @user do %>
+  <div>Hello <%= u.username %>
+  <p><%= u.description %></p></div>
 <% end %>

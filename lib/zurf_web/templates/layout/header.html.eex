@@ -1,0 +1,17 @@
+<header class="bg-gray-900 py-2 ">
+  <div class="container m-auto flex justify-items-center justify-between">
+    <%= link( to: Routes.page_path(@conn, :index)) do %><img src="<%= Routes.static_path(@conn, "/images/zurf.png") %>" class="h-12"><% end %>
+
+    <div id="urls" class="block mt-4 ml-20 mr-20">
+      <%= link("Home",  to: Routes.page_path(@conn, :index), class: "text-white hover:text-gray-400 mr-4") %>
+      <%= link("Library",  to: Routes.page_path(@conn, :index), class: "text-white hover:text-gray-400 mr-4") %>
+      <%= link("About",  to: Routes.page_path(@conn, :index), class: "text-white hover:text-gray-400 mr-4") %>
+      <%= link("Donation",  to: Routes.page_path(@conn, :index), class: "text-white hover:text-gray-400 mr-4") %>
+    </div>
+
+    <div id="auth" class="block mt-4">
+      <%= link("Login", to: Routes.auth_path(@conn, :show), class: "text-white mr-4") %>
+      <%= link("Sign Up", to: Routes.page_path(@conn, :index), class: "bg-purple-900 hover:bg-purple-800 text-white py-2 px-4 rounded") %>
+    </div>
+  </div>
+</header>
