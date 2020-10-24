@@ -18,7 +18,6 @@ defmodule ZurfWeb.Router do
 
     get "/", PageController, :index
     get "/login", AuthController, :show
-    get "/sample/:name/another/:vile", PageController, :sample
 
     # get "/add_book", PageController, :new
   end
@@ -27,8 +26,8 @@ defmodule ZurfWeb.Router do
   scope "/api", ZurfWeb do
     pipe_through :api
 
-    scope "/vi", V1, as: :v1 do
-      resources "/books", ApiController
+    scope "/v1", V1, as: :v1 do
+      post "/login", AuthController, :login
     end
   end
 

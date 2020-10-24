@@ -7,15 +7,16 @@
     <title><%= @title %></title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
-    <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/jquery.js") %>"></script>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/jquery.js") %>"></script>
   </head>
   <body class="bg-gray-300">
     <%= render("header.html", conn: @conn) %>
 
-    <main role="main" class="container m-auto py-6">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <div role="main" class="container m-auto py-6">
       <%= @inner_content %>
-    </main>
+    </div>
+
+    <%= render("footer.html", conn: @conn) %>
+
   </body>
 </html>
