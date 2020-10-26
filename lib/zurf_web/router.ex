@@ -28,6 +28,8 @@ defmodule ZurfWeb.Router do
 
     scope "/v1", V1, as: :v1 do
       post "/login", AuthController, :login
+      post "/signup", AuthController, :signup
+
       resources "/books", BookController
     end
   end
