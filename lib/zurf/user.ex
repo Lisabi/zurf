@@ -1,21 +1,29 @@
 defmodule Zurf.User do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Zurf.User
 
   schema "users" do
     field :email, :string
-    field :password, :string
+    field :pwd, :string, virtual: true
     field :username, :string
+    field :password, :string
 
     timestamps()
   end
 
   @doc false
-  def changeset(%User{} = user, attrs) do
+  def changeset(user, params \\ %{}) do
     user
-    |> cast(attrs, [:username, :email, :password])
-    |> validate_required([:username, :email, :password])
+    |> cast(params, [:username, :email, :pwd])
+    |> validate_required([:username, :email, :pwd])
+    |> password_changeset()
     |> unique_constraint(:email)
   end
+
+  def password_changeset(%Ecto.Changeset{changes: %{pwd: password}} = changeset) do
+    hashed_password = Bcrypt.hash_pwd_salt(password)
+    put_change(changeset, :password, hashed_password)
+  end
+
+  def password_changeset(changeset), do: changeset
 end

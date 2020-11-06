@@ -1,0 +1,18 @@
+<%= form_for @changeset, Routes.auth_path(@conn, :signup_action), [class: "p-2 mt-16 mx-auto rounded w-3/12", as: :user], fn f -> %>
+  <%= if @changeset.action do %>
+    <p class="bg-pink-100 text-red-800 border-red-300 border rounded p-3 mb-5 empty:hidden" role="alert">Please correct the errors below and try again</p>
+  <% end %>
+  <%= label f, :username %>
+  <%= text_input f, :username, class: "block mb-2 w-full rounded mt-3 focus:outline-none py-2 px-2" %>
+  <%= error_tag f, :username %>
+
+  <%= label f, :email %>
+  <%= text_input f, :email, class: "block mb-2 w-full rounded mt-3 focus:outline-none py-2 px-2" %>
+  <%= error_tag f, :email %>
+
+  <%= label f, :pwd %>
+  <%= password_input f, :pwd, class: "block mb-2 w-full rounded mt-3 focus:outline-none p-2 px-2" %>
+  <%= error_tag f, :pwd %>
+
+  <%= submit "Signup", class: "bg-purple-900 hover:bg-purple-800 text-white py-2 px-4 rounded mt-3 w-full cursor-pointer"%>
+<% end %>

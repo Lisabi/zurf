@@ -10,9 +10,16 @@
     </div>
 
     <div id="auth" class="block mt-4">
-      <%= link("Login", to: Routes.auth_path(@conn, :show), class: "text-white mr-4 hover:text-purple-600") %>
-      <span class="text-purple-500 mr-4">/</span>
-      <%= link("Sign Up", to: Routes.page_path(@conn, :index), class: "bg-purple-900 hover:bg-purple-800 text-white py-2 px-4 rounded") %>
+      <%= if(@conn.assigns.user_session) do %>
+        <span class="text-purple-500 mr-4">/</span>
+        <span class="text-purple-400">@</span>
+        <span class="text-gray-400"><%= @conn.assigns.user_session.username %></span>
+
+      <% else %>
+        <%= link("Login", to: Routes.auth_path(@conn, :show), class: "text-white mr-4 hover:text-purple-600") %>
+        <span class="text-purple-500 mr-4">/</span>
+        <%= link("Sign Up", to: Routes.auth_path(@conn, :signup), class: "bg-purple-900 hover:bg-purple-800 text-white py-2 px-4 rounded") %>
+      <% end %>
     </div>
   </div>
 </header>

@@ -1,17 +1,10 @@
-<form class="p-2 mt-16 mx-auto rounded w-3/12">
-  <label for="email" class="color-white">Email</label>
-  <input type="email" name="email" id="email" class="block mb-2 w-full rounded mt-3 focus:outline-none p-1 px-2">
-  <label for="password" class="color-white">Password</label>
-  <input type="password" name="password" id="password" class="block mb-2 w-full rounded mt-3 focus:outline-none p-1 px-2">
-  <input type="button" value="Login" class="bg-purple-900 hover:bg-purple-800 text-white py-2 px-4 rounded mt-3 w-full cursor-pointer" id="login_btn">
-</form>
-
-<script >
-$("#login_btn").click(function(){
-  let params = $("form").serialize();
-  let url = "<%= Routes.v1_auth_path(@conn, :login) %>"
-  $.post(url, params, function(response){
-    console.log(response)
-  })
-})
-</script>
+<%= form_for @conn, Routes.auth_path(@conn, :login), [class: "p-2 mt-16 mx-auto rounded w-3/12", as: :user], fn f -> %>
+  <%= if get_flash(@conn, :error) do %>
+    <p class="bg-pink-100 text-red-800 border-red-300 border rounded p-3 mb-5 empty:hidden" role="alert"><%= get_flash(@conn, :error) %></p>
+  <% end %>
+  <%= label f, :email %>
+  <%= text_input f, :email, class: "block mb-2 w-full rounded mt-3 focus:outline-none py-2 px-2" %>
+  <%= label f, :password %>
+  <%= password_input f, :password, class: "block mb-2 w-full rounded mt-3 focus:outline-none p-2 px-2" %>
+  <%= submit "Login", class: "bg-purple-900 hover:bg-purple-800 text-white py-2 px-4 rounded mt-3 w-full cursor-pointer"%>
+<% end %>

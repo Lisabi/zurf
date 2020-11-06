@@ -7,6 +7,7 @@ defmodule ZurfWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug ZurfWeb.Plugs.Authenticator
   end
 
   pipeline :api do
@@ -18,6 +19,9 @@ defmodule ZurfWeb.Router do
 
     get "/", PageController, :index
     get "/login", AuthController, :show
+    post "/login", AuthController, :login
+    get "/signup", AuthController, :signup
+    post "/signup", AuthController, :signup_action
 
     # get "/add_book", PageController, :new
   end
