@@ -22,8 +22,9 @@ defmodule ZurfWeb.Router do
     post "/login", AuthController, :login
     get "/signup", AuthController, :signup
     post "/signup", AuthController, :signup_action
+    delete "/logout", AuthController, :delete
 
-    # get "/add_book", PageController, :new
+    get "/library", PageController, :library
   end
 
   # Other scopes may use custom stacks.
