@@ -46,4 +46,11 @@ defmodule ZurfWeb.AuthController do
         |> render("signup.html", title: "Zurf - Signup", changeset: changeset)
     end
   end
+
+  def delete(conn, _) do
+    conn
+    |> clear_session()
+    |> configure_session(drop: true)
+    |> redirect(to: Routes.page_path(conn, :index))
+  end
 end

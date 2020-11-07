@@ -1,0 +1,4 @@
+<div class="w-4/12 m-auto">
+  <p class="mt-32">
+    <b><%= @text %></p>
+</div>

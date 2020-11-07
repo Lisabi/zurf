@@ -4,16 +4,17 @@
 
     <div id="urls" class="block mt-4 ml-20">
       <%= link("Home",  to: Routes.page_path(@conn, :index), class: "text-white hover:text-gray-400 mr-6") %>
-      <%= link("Library",  to: Routes.page_path(@conn, :index), class: "text-white hover:text-gray-400 mr-6") %>
+      <%= link("Library",  to: Routes.page_path(@conn, :library), class: "text-white hover:text-gray-400 mr-6") %>
       <%= link("About",  to: Routes.page_path(@conn, :index), class: "text-white hover:text-gray-400 mr-6") %>
       <%= link("Donation",  to: Routes.page_path(@conn, :index), class: "text-white hover:text-gray-400 mr-6") %>
     </div>
 
     <div id="auth" class="block mt-4">
-      <%= if(@conn.assigns.user_session) do %>
-        <span class="text-purple-500 mr-4">/</span>
+      <%= if(@user_session) do %>
+        <%= link("Logout", to: Routes.auth_path(@conn, :delete), class: "text-white bg-red-800 hover:bg-red-900 p-2 px-4 rounded mr-3", method: :delete) %>
+        <span class="text-purple-500 mr-3">/</span>
         <span class="text-purple-400">@</span>
-        <span class="text-gray-400"><%= @conn.assigns.user_session.username %></span>
+        <span class="text-gray-400"><%= @user_session.username %></span>
 
       <% else %>
         <%= link("Login", to: Routes.auth_path(@conn, :show), class: "text-white mr-4 hover:text-purple-600") %>
