@@ -9,9 +9,7 @@
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body class="bg-gray-300">
-
-
-    <%= render("header.html", conn: @conn) %>
+    <%= render(ZurfWeb.LayoutView, "header.html", assigns) %>
 
     <div role="main" class="container m-auto py-6">
       <%= @inner_content %>
