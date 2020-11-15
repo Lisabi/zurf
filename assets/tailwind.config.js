@@ -11,6 +11,9 @@ module.exports = {
     "./js/**/*.js",
   ],
   theme: {
+    fontFamily: {
+      sans: ["Roboto"],
+    },
     extend: {},
   },
   variants: {},
