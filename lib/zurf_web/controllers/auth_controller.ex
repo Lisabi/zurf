@@ -1,5 +1,6 @@
 defmodule ZurfWeb.AuthController do
   use ZurfWeb, :controller
+  plug :authenticate_profile when action in [:profile]
 
   def show(conn, _params) do
     conn
@@ -23,7 +24,7 @@ defmodule ZurfWeb.AuthController do
           id: user.id,
           email: user.email
         })
-        |> redirect(to: Routes.page_path(conn, :index))
+        |> redirect(to: Routes.auth_path(conn, :profile))
 
       {:error, message} ->
         conn
@@ -52,5 +53,22 @@ defmodule ZurfWeb.AuthController do
     |> clear_session()
     |> configure_session(drop: true)
     |> redirect(to: Routes.page_path(conn, :index))
+  end
+
+  def profile(conn, _) do
+    conn
+    |> put_layout("zurf_base.html")
+    |> render("profile.html", title: "Zurf - Profile/ ")
+  end
+
+  def authenticate_profile(conn, _opts) do
+    if(conn.assigns.user_session) do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You are't logged in")
+      |> redirect(to: Routes.page_path(conn, :index))
+      |> halt()
+    end
   end
 end

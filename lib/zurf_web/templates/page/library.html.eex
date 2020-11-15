@@ -1,4 +1,16 @@
-<div class="w-4/12 m-auto">
-  <p class="mt-32">
-    <b><%= @text %></p>
+<div class="w-7/12 m-auto">
+  <%= if(length(@books) > 0) do %>
+    <%= for book <- @books do %>
+      <div class="bg-white hover:bg-gray-100 p-4 rounded mb-5 shadow">
+        <h2 class="font-bold mb-2 text-2xl"><%= book.title %></h2>
+        <div id="author-label" class="text-purple-600 mb-1"><em><%= book.author %></em></div>
+        <p class="text-gray-900"><%= book.description %></p>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="bg-white hover:bg-gray-100 p-4 rounded mt-6 mb-5 shadow">
+      <h2 class="mb-2 text-2xl text-center">There are currently no books added to the library</h2>
+    </div>
+  <% end %>
+
 </div>

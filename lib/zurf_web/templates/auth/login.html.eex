@@ -3,8 +3,8 @@
     <p class="bg-pink-100 text-red-800 border-red-300 border rounded p-3 mb-5 empty:hidden" role="alert"><%= get_flash(@conn, :error) %></p>
   <% end %>
   <%= label f, :email %>
-  <%= text_input f, :email, class: "block mb-2 w-full rounded mt-3 focus:outline-none py-2 px-2" %>
+  <%= text_input f, :email, class: "block mb-2 w-full rounded mt-3 focus:outline-none py-2 px-2 border border-gray-600" %>
   <%= label f, :password %>
-  <%= password_input f, :password, class: "block mb-2 w-full rounded mt-3 focus:outline-none p-2 px-2" %>
+  <%= password_input f, :password, class: "block mb-2 w-full rounded mt-3 focus:outline-none p-2 px-2 border border-gray-600" %>
   <%= submit "Login", class: "bg-purple-900 hover:bg-purple-800 text-white py-2 px-4 rounded mt-3 w-full cursor-pointer"%>
 <% end %>

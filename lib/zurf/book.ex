@@ -3,8 +3,8 @@ defmodule Zurf.Book do
   import Ecto.Changeset
 
   schema "books" do
-    field :author, :string
     field :title, :string
+    belongs_to(:author, Zurf.Author)
 
     timestamps()
   end
@@ -12,7 +12,8 @@ defmodule Zurf.Book do
   @doc false
   def changeset(book, attrs) do
     book
-    |> cast(attrs, [:title, :author])
-    |> validate_required([:title, :author])
+    |> cast(attrs, [:title, :description])
+    |> validate_required([:title, :author_id, :user_id])
+    |> assoc_constraint(:author)
   end
 end

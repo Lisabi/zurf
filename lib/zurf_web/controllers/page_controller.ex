@@ -13,11 +13,12 @@ defmodule ZurfWeb.PageController do
   end
 
   def library(conn, _) do
-    text = "Books to show here"
+    books = Book.list_books()
+    IO.inspect(books)
 
     conn
     |> assign(:title, "Welcome to Zurf")
     |> put_layout("zurf_base.html")
-    |> render("library.html", text: text)
+    |> render("library.html", books: books)
   end
 end

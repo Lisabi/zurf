@@ -1,0 +1,5 @@
+<div class="w-7/12 m-auto bg-gray-100 p-4">
+  <h2 class="text-xl border-b border-gray-500 py-2">Welcome back <span class="font-bold"><%= @user_session.username %></span></h2>
+
+  <div class="mt-4"></div>
+</div>

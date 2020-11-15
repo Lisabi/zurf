@@ -19,6 +19,7 @@ defmodule ZurfWeb.Router do
 
     get "/", PageController, :index
     get "/login", AuthController, :show
+    get "/profile", AuthController, :profile
     post "/login", AuthController, :login
     get "/signup", AuthController, :signup
     post "/signup", AuthController, :signup_action

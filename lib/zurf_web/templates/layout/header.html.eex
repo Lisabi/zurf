@@ -11,10 +11,10 @@
 
     <div id="auth" class="block mt-4">
       <%= if(@user_session) do %>
-        <%= link("Logout", to: Routes.auth_path(@conn, :delete), class: "text-white bg-red-800 hover:bg-red-900 p-2 px-4 rounded mr-3", method: :delete) %>
+        <%= link("Logout", to: Routes.auth_path(@conn, :delete), class: "text-white bg-red-800 hover:bg-red-900 p-2 px-4 rounded mr-3 text-sm", method: :delete) %>
         <span class="text-purple-500 mr-3">/</span>
         <span class="text-purple-400">@</span>
-        <span class="text-gray-400"><%= @user_session.username %></span>
+        <%= link(@user_session.username, to: Routes.auth_path(@conn, :profile), class: "text-gray-400 hover:text-purple-500") %>
 
       <% else %>
         <%= link("Login", to: Routes.auth_path(@conn, :show), class: "text-white mr-4 hover:text-purple-600") %>
